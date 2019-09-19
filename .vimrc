@@ -79,6 +79,10 @@ Plug 'w0rp/ale'
 
 Plug 'airblade/vim-gitgutter'
 
+"Mapping Esc in insert mode
+inoremap jk <Esc>
+
+
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
 Plug 'tomtom/tcomment_vim'
@@ -130,3 +134,5 @@ nmap [c <Plug>(GitGutterPreviousHunk)
 nmap <Leader>hs <Plug>(GitGutterStageHunk)
 nmap <Leader>hu <Plug>(GitGutterUndoHunk)
 
+"Set timeout delay
+set timeoutlen=1000 ttimeoutlen=0
