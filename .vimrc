@@ -6,7 +6,6 @@ set showmatch	" Highlight matching brace
 set visualbell	" Use visual bell (no beeping)
 set t_vb=
  
-set hlsearch	" Highlight all search results
 set smartcase	" Enable smart-case search
 set ignorecase	" Always case-insensitive
 set incsearch	" Searches for strings incrementally
@@ -16,6 +15,7 @@ set shiftwidth=4	" Number of auto-indent spaces
 set smartindent	" Enable smart-indent
 set smarttab	" Enable smart-tabs
 set softtabstop=4	" Number of spaces per Tab
+set expandtab
  
 " Advanced
 set ruler	" Show row and column ruler information
@@ -103,9 +103,11 @@ Plug 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
 Plug 'honza/vim-snippets'
 
-Plug 'vim-scripts/vim-auto-save'
-
 Plug 'https://github.com/tpope/vim-endwise'
+
+Plug 'pangloss/vim-javascript'
+
+Plug 'kchmck/vim-coffee-script'
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -116,9 +118,6 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 let g:UltiSnipsEditSplit="vertical"
 
 let mapleader = " "
-
-" Autosave
-let g:auto_save = 1
 
 call plug#end()
 
@@ -136,3 +135,8 @@ nmap <Leader>hu <Plug>(GitGutterUndoHunk)
 
 "Set timeout delay
 set timeoutlen=1000 ttimeoutlen=0
+
+" Previous file
+map <Leader><Tab> <C-^>
+
+autocmd InsertEnter,InsertLeave * set cul!
