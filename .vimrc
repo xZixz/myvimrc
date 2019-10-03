@@ -80,7 +80,7 @@ Plug 'w0rp/ale'
 Plug 'airblade/vim-gitgutter'
 
 "Mapping Esc in insert mode
-inoremap jk <Esc>
+inoremap jk <Esc>:w<CR>
 
 
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -139,4 +139,8 @@ set timeoutlen=1000 ttimeoutlen=0
 " Previous file
 map <Leader><Tab> <C-^>
 
-autocmd InsertEnter,InsertLeave * set cul!
+" Bind reselect pasted text
+nnoremap gp `[v`]
+
+" Show cursor underline to indicate Insert Mode 
+autocmd insertenter,insertleave * set cul!
