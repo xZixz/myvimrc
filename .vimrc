@@ -77,7 +77,7 @@ Plug 'mattn/emmet-vim'
 
 Plug 'w0rp/ale'
 
-Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
 
 "Mapping Esc in insert mode
 inoremap jk <Esc>:w<CR>
@@ -122,16 +122,11 @@ let mapleader = " "
 call plug#end()
 
 " NERDTree bindings
-map <Leader>\ :NERDTreeToggle<CR><C-w>w
+map <Leader>\ :NERDTreeToggle<CR>
 map <Leader><bar> :NERDTreeFind<CR>
 
 "Mapping opening search pane using ;
 map <Leader>o :Files<CR>
-
-nmap ]c <Plug>(GitGutterNextHunk)
-nmap [c <Plug>(GitGutterPreviousHunk)
-nmap <Leader>hs <Plug>(GitGutterStageHunk)
-nmap <Leader>hu <Plug>(GitGutterUndoHunk)
 
 "Set timeout delay
 set timeoutlen=1000 ttimeoutlen=0
@@ -144,3 +139,9 @@ nnoremap gp `[v`]
 
 " Show cursor underline to indicate Insert Mode 
 autocmd insertenter,insertleave * set cul!
+
+" Autosave the buffer when leave
+set autowrite
+
+" Try to map ale_fix
+nmap <F8> <Plug>(ale_fix)
