@@ -11,10 +11,10 @@ set ignorecase	" Always case-insensitive
 set incsearch	" Searches for strings incrementally
  
 set autoindent	" Auto-indent new lines
-set shiftwidth=4	" Number of auto-indent spaces
+set shiftwidth=2	" Number of auto-indent spaces
 set smartindent	" Enable smart-indent
 set smarttab	" Enable smart-tabs
-set softtabstop=4	" Number of spaces per Tab
+set softtabstop=2	" Number of spaces per Tab
 set expandtab
  
 " Advanced
@@ -145,3 +145,13 @@ set autowrite
 
 " Try to map ale_fix
 nmap <F8> <Plug>(ale_fix)
+
+" Mapping edit and sourcing .vimrc 
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
+" Run test current line
+nnoremap <leader>rt V:Runner<cr>
+
+" Toggle ALE
+nnoremap <leader>at :ALEToggle<cr>
