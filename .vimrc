@@ -153,5 +153,7 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 " Run test current line
 nnoremap <leader>rt V:Runner<cr>
 
-" Toggle ALE
+" ALE bindings
 nnoremap <leader>at :ALEToggle<cr>
+nnoremap <leader>aj :ALENext<cr>
+nnoremap <leader>ak :ALEPrevious<cr>
