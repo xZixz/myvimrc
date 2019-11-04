@@ -79,10 +79,6 @@ Plug 'w0rp/ale'
 
 Plug 'tpope/vim-fugitive'
 
-"Mapping Esc in insert mode
-inoremap jk <Esc>:w<CR>
-
-
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
 Plug 'tomtom/tcomment_vim'
@@ -121,6 +117,9 @@ let mapleader = " "
 
 call plug#end()
 
+" Mapping jk in insert mode as Esc
+inoremap jk <Esc>
+
 " NERDTree bindings
 map <Leader>\ :NERDTreeToggle<CR>
 map <Leader><bar> :NERDTreeFind<CR>
@@ -157,3 +156,9 @@ nnoremap <leader>rt V:Runner<cr>
 nnoremap <leader>at :ALEToggle<cr>
 nnoremap <leader>aj :ALENext<cr>
 nnoremap <leader>ak :ALEPrevious<cr>
+
+" New row with 1 blank line between
+nnoremap <leader>m o<esc>o
+
+" Set autowrite
+set autowrite
