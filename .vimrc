@@ -28,6 +28,7 @@ set rtp+=~/.fzf
 set pastetoggle=<F2>
 
 " Settings for splitting
+
 " Map moving combinations
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-J> <C-W><C-J>
@@ -75,7 +76,7 @@ Plug 'editorconfig/editorconfig-vim'
 
 Plug 'mattn/emmet-vim'
 
-Plug 'w0rp/ale'
+Plug 'w0rp/ale', { 'on': 'ALEToggle' }
 
 Plug 'tpope/vim-fugitive'
 
@@ -86,12 +87,14 @@ Plug 'tomtom/tcomment_vim'
 Plug 'jiangmiao/auto-pairs'
 
 Plug 'tpope/vim-rbenv'
-"
-" Plug 'tpope/vim-bundler'
+
+Plug 'tpope/vim-bundler'
 
 Plug 'ervandew/supertab'
 
 Plug 'ecomba/vim-ruby-refactoring'
+
+Plug 'https://github.com/easymotion/vim-easymotion.git'
 
 " Track the engine.
 Plug 'SirVer/ultisnips'
@@ -137,7 +140,7 @@ map <Leader><Tab> <C-^>
 nnoremap gp `[v`]
 
 " Show cursor underline to indicate Insert Mode 
-autocmd insertenter,insertleave * set cul!
+" autocmd insertenter,insertleave * set cul!
 
 " Autosave the buffer when leave
 set autowrite
@@ -162,3 +165,14 @@ nnoremap <leader>m o<esc>o
 
 " Set autowrite
 set autowrite
+
+" Leader for easy motion
+map <Leader> <Plug>(easymotion-prefix)
+
+" Move lines
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
