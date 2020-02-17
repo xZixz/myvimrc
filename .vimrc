@@ -9,6 +9,7 @@ set t_vb=
 set smartcase	" Enable smart-case search
 set ignorecase	" Always case-insensitive
 set incsearch	" Searches for strings incrementally
+set nohlsearch
  
 set autoindent	" Auto-indent new lines
 set shiftwidth=2	" Number of auto-indent spaces
@@ -168,6 +169,17 @@ set autowrite
 
 " Leader for easy motion
 map <Leader> <Plug>(easymotion-prefix)
+
+" Need one more keystroke, but on average, it may be more comfortable.
+nmap s <Plug>(easymotion-overwin-f2)
+
+" JK easymotion
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+
+map <Leader>L <Plug>(easymotion-bd-jk)
+
+let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
 
 " Move lines
 nnoremap <A-j> :m .+1<CR>==
