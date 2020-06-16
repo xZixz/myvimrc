@@ -188,3 +188,19 @@ inoremap <A-j> <Esc>:m .+1<CR>==gi
 inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
+
+iabbrev afsl # frozen_string_literal: true
+
+augroup filetype_ruby
+  autocmd!
+  autocmd FileType ruby iabbrev <buffer> def def<CR><Esc>dd<Up>A
+
+" Fast search accross files for function definition of visual selected function name
+  autocmd FileType ruby vnoremap <buffer> <C-d> iwy:Ag def <C-r>"<CR>
+
+augroup END
+
+" Fast search accross files for visual selected text
+vnoremap <C-f> y:Ag <C-r>"<CR>
+
+echo ">^.^<"
