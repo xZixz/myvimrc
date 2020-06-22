@@ -45,6 +45,7 @@ set splitright
 
 runtime macros/matchit.vim
 
+" Plugins ------ {{{
 call plug#begin('~/.vim/plugged')
 
 Plug 'kana/vim-textobj-user'
@@ -108,14 +109,17 @@ Plug 'https://github.com/tpope/vim-endwise'
 Plug 'pangloss/vim-javascript'
 
 Plug 'kchmck/vim-coffee-script'
+" }}}
 
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+" UltiSnips ------ {{{
+"" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
+" }}}
 
 let mapleader = " "
 
@@ -191,16 +195,34 @@ vnoremap <A-k> :m '<-2<CR>gv=gv
 
 iabbrev afsl # frozen_string_literal: true
 
+" Vimscript file settings ------ {{{
+augroup filetype_vim
+  autocmd!
+  autocmd FileType vim setlocal foldmethod=marker
+augroup END
+" }}}
+
+" Ruby file settings ------ {{{
 augroup filetype_ruby
   autocmd!
   autocmd FileType ruby iabbrev <buffer> def def<CR><Esc>dd<Up>A
-
 " Fast search accross files for function definition of visual selected function name
   autocmd FileType ruby vnoremap <buffer> <C-d> iwy:Ag def <C-r>"<CR>
+augroup END
+" }}}
 
+augroup filetype_markdown
+  autocmd!
+  autocmd FileType markdown onoremap <buffer> ih :<C-u>execute "normal! ?^[=-][=-]\\+$\r:nohlsearch\rkvg_"<CR>
 augroup END
 
 " Fast search accross files for visual selected text
 vnoremap <C-f> y:Ag <C-r>"<CR>
+
+" Movements
+onoremap in( :<C-u>normal! f(vi(<CR>
+onoremap il( :<C-u>normal! F(vi(<CR>
+
+set foldlevelstart=0
 
 echo ">^.^<"
