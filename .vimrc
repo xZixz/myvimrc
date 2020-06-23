@@ -219,6 +219,9 @@ augroup END
 " Fast search accross files for visual selected text
 vnoremap <C-f> y:Ag <C-r>"<CR>
 
+" Enter Ag search
+nnoremap <C-f> :Ag 
+
 " Movements
 onoremap in( :<C-u>normal! f(vi(<CR>
 onoremap il( :<C-u>normal! F(vi(<CR>
