@@ -203,11 +203,13 @@ augroup END
 " }}}
 
 " Ruby file settings ------ {{{
-augroup filetype_ruby
+augroup filetype_rails
   autocmd!
-  autocmd FileType ruby iabbrev <buffer> def def<CR><Esc>dd<Up>A
+  autocmd FileType ruby,haml,coffee iabbrev <buffer> def def<CR><Esc>dd<Up>A
   " Fast search accross files for function definition of visual selected function name
-  autocmd FileType ruby vnoremap <buffer> <C-d> iwy:Ag def <C-r>"<CR>
+  autocmd FileType ruby,haml,coffee vnoremap <buffer> <C-d> iwy:Ag def <C-r>"<CR>
+  autocmd FileType ruby,haml,coffee nnoremap <buffer> <C-m> :Emodel 
+  autocmd FileType ruby,haml,coffee nnoremap <buffer> <C-k> :Econtroller 
 augroup END
 " }}}
 
@@ -222,6 +224,9 @@ vnoremap <C-f> y:Ag <C-r>"<CR>
 " Enter Ag search
 nnoremap <C-f> :Ag 
 
+" Prefix \v in search
+nnoremap / /\v
+
 " Movements
 onoremap in( :<C-u>normal! f(vi(<CR>
 onoremap il( :<C-u>normal! F(vi(<CR>
@@ -233,3 +238,6 @@ echo ">^.^<"
 " Hightlight TODO and todo's content
 match Todo /TODO /
 match PmenuSel /\v(TODO )@<=.+$/
+
+" map saving in normal mode
+nnoremap <C-[> :w<CR>
