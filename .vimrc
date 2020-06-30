@@ -206,7 +206,7 @@ augroup END
 augroup filetype_ruby
   autocmd!
   autocmd FileType ruby iabbrev <buffer> def def<CR><Esc>dd<Up>A
-" Fast search accross files for function definition of visual selected function name
+  " Fast search accross files for function definition of visual selected function name
   autocmd FileType ruby vnoremap <buffer> <C-d> iwy:Ag def <C-r>"<CR>
 augroup END
 " }}}
@@ -229,3 +229,7 @@ onoremap il( :<C-u>normal! F(vi(<CR>
 set foldlevelstart=0
 
 echo ">^.^<"
+
+" Hightlight TODO and todo's content
+match Todo /TODO /
+match PmenuSel /\v(TODO )@<=.+$/
