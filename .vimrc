@@ -98,6 +98,8 @@ Plug 'ecomba/vim-ruby-refactoring'
 
 Plug 'https://github.com/easymotion/vim-easymotion.git'
 
+Plug 'udalov/kotlin-vim'
+
 " Track the engine.
 Plug 'SirVer/ultisnips'
 
@@ -193,7 +195,7 @@ inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
 
-iabbrev afsl # frozen_string_literal: true
+iabbrev afsl # frozen_string_literal: true<cr>
 
 " Vimscript file settings ------ {{{
 augroup filetype_vim
@@ -209,9 +211,13 @@ augroup filetype_rails
   " Fast search accross files for function definition of visual selected function name
   autocmd FileType ruby,haml,coffee vnoremap <buffer> <C-d> iwy:Ag def <C-r>"<CR>
   autocmd FileType ruby,haml,coffee nnoremap <buffer> <C-m> :Emodel 
-  autocmd FileType ruby,haml,coffee nnoremap <buffer> <C-k> :Econtroller 
 augroup END
 " }}}
+
+augroup filetype_ruby
+  autocmd!
+  autocmd FileType ruby iabbrev <buffer> TD # TODO,
+augroup END
 
 augroup filetype_markdown
   autocmd!
@@ -236,8 +242,8 @@ set foldlevelstart=0
 echo ">^.^<"
 
 " Hightlight TODO and todo's content
-match Todo /TODO /
-match PmenuSel /\v(TODO )@<=.+$/
+match Todo /TODO,/
+match PmenuSel /\v(TODO, )@<=.*$/
 
 " map saving in normal mode
 nnoremap <C-[> :w<CR>
