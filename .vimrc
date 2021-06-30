@@ -1,3 +1,9 @@
+" Fix Vim into replace mode when startup
+if $TERM =~ 'xterm'
+  set noek
+endif
+nnoremap <silent> <esc> <esc>:noh<cr>
+
 filetype plugin indent on
 set linebreak	" Break lines at word (requires Wrap lines)
 set showbreak=+++	" Wrap-broken line prefix
@@ -238,8 +244,6 @@ onoremap in( :<C-u>normal! f(vi(<CR>
 onoremap il( :<C-u>normal! F(vi(<CR>
 
 set foldlevelstart=0
-
-echo ">^.^<"
 
 " Hightlight TODO and todo's content
 match Todo /TODO,/
